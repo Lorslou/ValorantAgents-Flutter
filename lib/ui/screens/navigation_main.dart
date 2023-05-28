@@ -1,0 +1,56 @@
+import 'package:agentsvalorant/ui/views/favorites_view.dart';
+import 'package:agentsvalorant/ui/views/home_view.dart';
+import 'package:agentsvalorant/ui/views/search_view.dart';
+import 'package:flutter/material.dart';
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int selectedIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    final screens = [
+      const SearchView(),
+      const FavoritesView(),
+      const HomeView()
+    ];
+    return Scaffold(
+      body: const IndexedStack(
+        children: screens,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedIndex,
+        onTap: (value) {
+          setState(() {
+            selectedIndex = value;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+            backgroundColor: Colors.white,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: Colors.white,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_outline),
+            activeIcon: Icon(Icons.favorite),
+            label: 'Favorites',
+            backgroundColor: Colors.white,
+          ),
+        ],
+      ),
+    );
+  }
+}
