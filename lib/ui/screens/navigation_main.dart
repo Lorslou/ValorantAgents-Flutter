@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        //type: BottomNavigationBarType.shifting,
         currentIndex: selectedIndex,
         onTap: (value) {
           setState(() {
