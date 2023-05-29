@@ -21,7 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
       const HomeView()
     ];
     return Scaffold(
-      body: const IndexedStack(
+      body: IndexedStack(
+        index: selectedIndex,
         children: screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
