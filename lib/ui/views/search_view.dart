@@ -2,7 +2,6 @@ import 'package:agentsvalorant/models/agent_model.dart';
 import 'package:agentsvalorant/network/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:agentsvalorant/ui/delegates/search_agent_delegate.dart';
-import 'package:agentsvalorant/ui/widgets/custom_searchbar.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});
@@ -19,86 +18,71 @@ class _SearchViewState extends State<SearchView> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Agent List'),
+          title: const Text('Search Agent'),
           actions: [
             IconButton(
               onPressed: () {
-                showSearch(
-                  context: context,
-                  delegate: SearchAgentDelegate(),
-                );
+                showSearch(context: context, delegate: SearchAgentDelegate());
               },
               icon: const Icon(Icons.search_sharp),
-            )
+            ),
           ],
         ),
         body: Container(
           padding: const EdgeInsets.all(20),
           child: FutureBuilder<AgentModel?>(
-              future: _apiService.getAgents(),
-              builder: (context, snapshot) {
-                var data = snapshot.data!.data;
+            future: _apiService.getAgents(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasData) {
+                var agents = snapshot.data!.data;
                 return ListView.builder(
-                    itemCount: data.length,
-                    itemBuilder: (context, index) {
-                      if (!snapshot.hasData) {
-                        return const Center(child: CircularProgressIndicator());
-                      }
-                      var agent = data[index];
-                      return Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ListTile(
-                            title: Row(
-                              children: [
-                                Container(
-                                  width: 60,
-                                  height: 60,
-                                  decoration: BoxDecoration(
-                                    color: Colors.deepPurpleAccent,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      agent
-                                          .uuid, //TODO AQUÍ HAY QUE PONER UNA IMAGEN
-                                      style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 20),
-                                Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        agent.displayName,
-                                        style: const TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                      const SizedBox(height: 10),
-                                      Text(
-                                        agent
-                                            .developerName, //TODO SI AQUÍ PONGO EL ROL, APARECE NULL CUANDO HACEMOS SLIDE
-                                        style: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                    ])
-                              ],
+                  itemCount: agents.length,
+                  itemBuilder: (context, index) {
+                    var agent = agents[index];
+                    return Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ListTile(
+                          leading: Container(
+                            width: 60,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 255, 77, 77),
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                            // trailing: Text('More Info'),
+                            child: agent.displayIcon.isNotEmpty
+                                ? Image.network(agent.displayIcon)
+                                : Container(),
+                          ),
+                          title: Text(
+                            agent.displayName,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          subtitle: Text(
+                            agent.developerName,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
-                      );
-                    });
-              }),
+                      ),
+                    );
+                  },
+                );
+              } else if (snapshot.hasError) {
+                return const Center(child: Text('Error fetching data'));
+              } else {
+                return Container();
+              }
+            },
+          ),
         ),
       ),
     );
