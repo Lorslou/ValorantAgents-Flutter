@@ -17,8 +17,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final screens = [
       const SearchView(),
-      const FavoritesView(),
-      const HomeView()
+      const HomeView(),
+      const FavoritesView()
     ];
     return Scaffold(
       body: IndexedStack(

@@ -8,23 +8,14 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  int count = 0;
-
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Current favorites: $count'),
-          FilledButton.tonal(
-              onPressed: () {
-                setState(() {
-                  count++;
-                });
-              },
-              child: const Icon(Icons.add)),
-        ],
+    return const SizedBox(
+      width: double.infinity,
+      height: double.infinity,
+      child: Image(
+        image: AssetImage('lib/assets/home_image2.jpg'),
+        fit: BoxFit.cover,
       ),
     );
   }

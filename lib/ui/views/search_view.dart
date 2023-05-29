@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:agentsvalorant/ui/delegates/search_agent_delegate.dart';
+import 'package:agentsvalorant/ui/widgets/custom_searchbar.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});
@@ -8,23 +10,11 @@ class SearchView extends StatefulWidget {
 }
 
 class _SearchViewState extends State<SearchView> {
-  int count = 0;
-
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Current searchs: $count'),
-          FilledButton.tonal(
-              onPressed: () {
-                setState(() {
-                  count++;
-                });
-              },
-              child: const Icon(Icons.add)),
-        ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const CustomSearchBar(),
       ),
     );
   }
