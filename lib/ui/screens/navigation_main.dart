@@ -1,3 +1,4 @@
+import 'package:agentsvalorant/ui/screens/detail_agent.dart';
 import 'package:agentsvalorant/ui/views/favorites_view.dart';
 import 'package:agentsvalorant/ui/views/home_view.dart';
 import 'package:agentsvalorant/ui/views/search_view.dart';
@@ -20,6 +21,16 @@ class _HomeScreenState extends State<HomeScreen> {
       const HomeView(),
       const FavoritesView()
     ];
+    /*
+
+    final List<Widget> screens [
+      const SearchView(),
+      const HomeView(),
+      const FavoritesView(),
+      const AgentDetail()
+    ];
+    */
+
     return Scaffold(
       body: IndexedStack(
         index: selectedIndex,

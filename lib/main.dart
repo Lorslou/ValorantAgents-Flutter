@@ -1,7 +1,9 @@
 import 'package:agentsvalorant/models/agent_model.dart';
 import 'package:agentsvalorant/network/api_service.dart';
+import 'package:agentsvalorant/ui/screens/detail_agent.dart';
 import 'package:flutter/material.dart';
 
+import 'constants/navigation_routes.dart';
 import 'ui/screens/navigation_main.dart';
 
 void main() {
@@ -15,13 +17,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const HomeScreen(),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const HomeScreen(),
+        routes: {
+          detailRoute: (context) => const AgentDetail(),
+        });
   }
 }
 

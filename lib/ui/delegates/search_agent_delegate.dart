@@ -1,3 +1,4 @@
+import 'package:agentsvalorant/constants/navigation_routes.dart';
 import 'package:agentsvalorant/models/agent_model.dart';
 import 'package:agentsvalorant/network/api_service.dart';
 import 'package:flutter/material.dart';
@@ -83,53 +84,57 @@ class SearchAgentDelegate extends SearchDelegate {
           itemBuilder: (context, index) {
             Datum agent = filteredAgents[index];
 
-            return ListTile(
-              title: Row(
-                children: [
-                  Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.deepPurpleAccent,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: Text(
-                        agent.displayName,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                        overflow: TextOverflow.clip,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            return GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, detailRoute, arguments: agent);
+                },
+                child: ListTile(
+                  title: Row(
                     children: [
-                      Text(
-                        agent.displayName,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
+                      Container(
+                        width: 60,
+                        height: 60,
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 255, 77, 77),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            agent.displayName,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            overflow: TextOverflow.clip,
+                          ),
                         ),
                       ),
-                      const SizedBox(height: 10),
-                      Text(
-                        agent.developerName,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                        ),
+                      const SizedBox(width: 20),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            agent.displayName,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            agent.developerName,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
-            );
+                ));
           },
         );
       },
