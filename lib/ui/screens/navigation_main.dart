@@ -16,20 +16,20 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    /*
     final screens = [
       const SearchView(),
       const HomeView(),
       const FavoritesView()
     ];
-    /*
+    */
 
-    final List<Widget> screens [
+    final List<Widget> screens = [
       const SearchView(),
       const HomeView(),
       const FavoritesView(),
       const AgentDetail()
     ];
-    */
 
     return Scaffold(
       body: IndexedStack(
