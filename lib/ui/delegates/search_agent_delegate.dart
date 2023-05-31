@@ -1,8 +1,9 @@
 import 'package:agentsvalorant/constants/navigation_routes.dart';
 import 'package:agentsvalorant/models/agent_model.dart';
-import 'package:agentsvalorant/network/api_service.dart';
+import 'package:agentsvalorant/services/network/api_service.dart';
 import 'package:flutter/material.dart';
 
+// TODO SWAP TO CONSTANTS
 class SearchAgentDelegate extends SearchDelegate {
   List<String> searchTerms = [
     'Brimstone',

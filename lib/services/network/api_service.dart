@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:agentsvalorant/models/agent_model.dart';
 import 'package:http/http.dart' as http;
-import '../constants/api_route.dart';
+import '../../constants/api_route.dart';
 
 class ApiService {
   Future<AgentModel?> getAgents() async {

@@ -1,5 +1,5 @@
 import 'package:agentsvalorant/models/agent_model.dart';
-import 'package:agentsvalorant/network/api_service.dart';
+import 'package:agentsvalorant/services/network/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:agentsvalorant/ui/delegates/search_agent_delegate.dart';
 
@@ -9,6 +9,8 @@ class SearchView extends StatefulWidget {
   @override
   State<SearchView> createState() => _SearchViewState();
 }
+
+//TODO SWAP TO SCRRENS FOLDER
 
 class _SearchViewState extends State<SearchView> {
   final ApiService _apiService = ApiService();
