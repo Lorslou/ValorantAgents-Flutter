@@ -48,6 +48,12 @@ class AuthStateNeedsVerification extends AuthState {
       : super(isLoading: isLoading);
 }
 
+/*
+  With EquatableMixin, the state's properties are compared and checked if they have changed because we want to 
+  identify those specific changes to update the user interface accordingly. However, in the case of AuthStateLoggedIn, 
+  the mere presence of this state is sufficient to indicate that the user is authenticated, and the corresponding 
+  actions can be performed in the user interface without the need for a detailed property comparison.
+*/
 class AuthStateLoggedOut extends AuthState with EquatableMixin {
   final Exception? exception;
   const AuthStateLoggedOut({
