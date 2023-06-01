@@ -3,6 +3,11 @@ import 'package:agentsvalorant/services/auth/bloc/auth_event.dart';
 import 'package:agentsvalorant/services/auth/bloc/auth_state.dart';
 import 'package:bloc/bloc.dart';
 
+/*
+  the constructor of AuthBloc defines the different event handlers that specify how the bloc 
+  should react to each type of event and update the authentication state accordingly. Each event 
+  handler emits a new state using the emit() function
+*/
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(AuthProvider provider)
       : super(const AuthStateUninitialized(isLoading: true)) {
@@ -110,10 +115,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       ));
       final email = event.email;
       if (email == null) {
-        return; // user just wants to go to forgot-password screen
+        return;
       }
 
-      // user wants to actually send a forgot-password email
       emit(const AuthStateForgotPassword(
         exception: null,
         hasSentEmail: false,
