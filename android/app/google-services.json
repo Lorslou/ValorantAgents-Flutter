@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "144579929143",
+    "project_id": "agents-valorant-flutter",
+    "storage_bucket": "agents-valorant-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:144579929143:android:4ffcec568c1b0f012e8bb2",
+        "android_client_info": {
+          "package_name": "com.lorena.agentsvalorant"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlkYobEJnzFwdk0t1ckJgjKSUxa3hCIVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
