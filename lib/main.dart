@@ -5,7 +5,6 @@ import 'package:agentsvalorant/services/auth/bloc/auth_state.dart';
 import 'package:agentsvalorant/services/auth/firebase_auth_provider.dart';
 import 'package:agentsvalorant/ui/screens/detail_agent.dart';
 import 'package:agentsvalorant/ui/screens/navigation_main.dart';
-import 'package:agentsvalorant/ui/views/favorites_view.dart';
 import 'package:agentsvalorant/ui/views/user/forgot_password_view.dart';
 import 'package:agentsvalorant/ui/views/user/login_view.dart';
 import 'package:agentsvalorant/ui/views/user/register_view.dart';

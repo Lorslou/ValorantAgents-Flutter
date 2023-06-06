@@ -35,3 +35,11 @@ class FavoritesStateError extends FavoritesState {
   @override
   List<Object?> get props => [exception, isLoading];
 }
+
+class FavoritesStateUninitialized extends FavoritesState {
+  const FavoritesStateUninitialized({required bool isLoading})
+      : super(isLoading: isLoading);
+
+  @override
+  List<Object?> get props => [isLoading];
+}
