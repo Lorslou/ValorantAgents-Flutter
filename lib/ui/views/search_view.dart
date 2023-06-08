@@ -10,8 +10,6 @@ class SearchView extends StatefulWidget {
   State<SearchView> createState() => _SearchViewState();
 }
 
-//TODO SWAP TO SCRRENS FOLDER
-
 class _SearchViewState extends State<SearchView> {
   final ApiService _apiService = ApiService();
 

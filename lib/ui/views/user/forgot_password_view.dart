@@ -1,7 +1,7 @@
 import 'package:agentsvalorant/services/auth/bloc/auth_bloc.dart';
 import 'package:agentsvalorant/services/auth/bloc/auth_event.dart';
 import 'package:agentsvalorant/services/auth/bloc/auth_state.dart';
-import 'package:agentsvalorant/utilities/error_dialog.dart';
+import 'package:agentsvalorant/utilities/dialogs/error_dialog.dart';
 import 'package:agentsvalorant/utilities/password_reset_email.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
