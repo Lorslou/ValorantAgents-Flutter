@@ -1,6 +1,4 @@
-import 'package:agentsvalorant/constants/navigation_routes.dart';
 import 'package:agentsvalorant/db/cloud/cloud_favorites.dart';
-import 'package:agentsvalorant/models/agent_model.dart';
 import 'package:agentsvalorant/utilities/dialogs/delete_dialog.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +27,7 @@ class FavoriteAgentsListView extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ListTile(
                 onTap: () {
-                  onTap(favorite);
+                  //Navigator.pushNamed(context, detailRoute, arguments: stp);
                 },
                 leading: Container(
                   width: 60,
@@ -56,7 +54,7 @@ class FavoriteAgentsListView extends StatelessWidget {
                       onDeleteAgent(favorite);
                     }
                   },
-                  icon: const Icon(Icons.favorite),
+                  icon: const Icon(Icons.clear),
                 ),
               ),
             ),
