@@ -14,6 +14,16 @@ class FirebaseCloudStorage {
       required String displayName,
       required bool isFavorite}) async {
     try {
+      final agentAlreadyOnDB = await favoriteAgents
+          .where(ownerUserIdFieldName, isEqualTo: ownerUserId)
+          .where(agentIdFieldName, isEqualTo: agentUuid)
+          .limit(1)
+          .get();
+
+      if (agentAlreadyOnDB.docs.isNotEmpty) {
+        throw CouldNotAddFavoriteException();
+      }
+
       final document = await favoriteAgents.add({
         ownerUserIdFieldName: ownerUserId,
         agentIdFieldName: agentUuid,
@@ -30,6 +40,7 @@ class FirebaseCloudStorage {
         displayName: displayName,
       );
     } catch (e) {
+      //await showErrorDialog(context, 'An agent cannot be added to favorites if it is already in the list');
       throw CouldNotAddFavoriteException();
     }
   }

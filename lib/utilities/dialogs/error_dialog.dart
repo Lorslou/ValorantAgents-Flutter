@@ -5,7 +5,6 @@ Future<void> showErrorDialog(
   BuildContext context,
   String text,
 ) {
-  // TODO SWAP TO LOC
   return showGenericDialog<void>(
     context: context,
     title: 'An error occurred',
