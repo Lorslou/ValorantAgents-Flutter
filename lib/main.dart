@@ -19,7 +19,7 @@ void main() {
     MaterialApp(
       title: 'HOME',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.red,
       ),
       home: BlocProvider<AuthBloc>(
         create: (context) => AuthBloc(FirebaseAuthProvider()),

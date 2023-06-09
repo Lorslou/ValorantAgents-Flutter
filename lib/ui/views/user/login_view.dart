@@ -5,6 +5,7 @@ import 'package:agentsvalorant/services/auth/bloc/auth_state.dart';
 import 'package:agentsvalorant/utilities/dialogs/error_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -49,63 +50,161 @@ class _LoginViewState extends State<LoginView> {
         }
       },
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Login'),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              const Text(
-                  'Please log in to your account in order to interact with and create notes!'),
-              TextField(
-                controller: _email,
-                enableSuggestions: false,
-                autocorrect: false,
-                keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                  hintText: 'Enter your email here',
+        backgroundColor: const Color(0xFF1E1F21),
+        body: SafeArea(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 58,
                 ),
-              ),
-              TextField(
-                controller: _password,
-                obscureText: true,
-                enableSuggestions: false,
-                autocorrect: false,
-                decoration: const InputDecoration(
-                  hintText: 'Enter your password here',
+                Image.asset(
+                  'lib/assets/logo_notext.png', // Ruta relativa de tu imagen
+                  height: 200,
                 ),
-              ),
-              TextButton(
-                onPressed: () async {
-                  final email = _email.text;
-                  final password = _password.text;
-                  context.read<AuthBloc>().add(
-                        AuthEventLogIn(
-                          email,
-                          password,
+                const SizedBox(
+                  height: 48,
+                ),
+                Text(
+                  'HELLO AGENT',
+                  style: GoogleFonts.anton(
+                    fontSize: 52,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 20.0),
+                      child: TextField(
+                        controller: _email,
+                        enableSuggestions: false,
+                        autocorrect: false,
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Email',
                         ),
-                      );
-                },
-                child: const Text('Login'),
-              ),
-              TextButton(
-                onPressed: () {
-                  context.read<AuthBloc>().add(
-                        const AuthEventForgotPassword(),
-                      );
-                },
-                child: const Text('I forgot my password'),
-              ),
-              TextButton(
-                onPressed: () {
-                  context.read<AuthBloc>().add(
-                        const AuthEventShouldRegisterFirst(),
-                      );
-                },
-                child: const Text('Not registered yet? Register here!'),
-              )
-            ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: TextField(
+                        controller: _password,
+                        obscureText: true,
+                        enableSuggestions: false,
+                        autocorrect: false,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Password',
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: InkWell(
+                    onTap: () async {
+                      final email = _email.text;
+                      final password = _password.text;
+                      context.read<AuthBloc>().add(
+                            AuthEventLogIn(
+                              email,
+                              password,
+                            ),
+                          );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFF4654),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Sign in',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Not a memeber?',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        context.read<AuthBloc>().add(
+                              const AuthEventShouldRegisterFirst(),
+                            );
+                      },
+                      child: const Text(
+                        ' Register now',
+                        style: TextStyle(
+                          color: Color(0xFFFF4654),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                TextButton(
+                  onPressed: () {
+                    context.read<AuthBloc>().add(
+                          const AuthEventForgotPassword(),
+                        );
+                  },
+                  child: const Text('I forgot my password'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    context.read<AuthBloc>().add(
+                          const AuthEventShouldRegisterFirst(),
+                        );
+                  },
+                  child: const Text('Not registered yet? Register here!'),
+                )
+              ],
+            ),
           ),
         ),
       ),

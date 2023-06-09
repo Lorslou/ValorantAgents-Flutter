@@ -99,15 +99,9 @@ class SearchAgentDelegate extends SearchDelegate {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Center(
-                          child: Text(
-                            agent.displayName,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                            overflow: TextOverflow.clip,
-                          ),
+                          child: agent.displayIcon.isNotEmpty
+                              ? Image.network(agent.displayIcon)
+                              : Container(),
                         ),
                       ),
                       const SizedBox(width: 20),
